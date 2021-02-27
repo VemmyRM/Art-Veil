@@ -1,11 +1,13 @@
+import { withAuthorization } from '../Session';
 import 'core-js/es/array';
-import './App.css';
+//import './App.css';
 import React, { Component } from 'react';
 const SerpWow = require('google-search-results-serpwow');
 let serpwow = new SerpWow('7DFD15F3226843DCB967BDC20BA2D6F3');
 const axios = require('axios').default;
+var fs = require("fs");
 
-class App extends Component {
+class HomePage extends Component {
 
 constructor(props){
   super(props);
@@ -17,6 +19,7 @@ handleCall(params) {
   .then(result => {
     // pretty-print the JSON result
     console.log(JSON.stringify(result, 0, 2));
+    console.log(result.search_information.query_displayed)
   })
   .catch(error => {
     console.log(error);
@@ -24,33 +27,42 @@ handleCall(params) {
 }
 
 submitFile = event => {
-  this.setState({source: event.target.files[0]});
 }
 
+//PHPSESSID=rthvrjbpudidf1cqcbbcml7l96
 
 componentDidUpdate() {
   // POST request using axios with error handling
 
-  console.log(this.state.source);
+  console.log(this.state.source.type);
+
+
+
 
   const headers = {
-    'Access-Control-Allow-Headers': "*",
-    'authority':'imgbb.com',
-    'cookie':'PHPSESSID=rthvrjbpudidf1cqcbbcml7l96',
-    'origin':'https://imgbb.com',
-    'referer':'https://imgbb.com/',
-    'sec-ch-ua':'"Chromium";v="88", "Google Chrome";v="88", ";Not A Brand";v="99"',
-    'sec-ch-ua-mobile':'?0'
+    // 'Access-Control-Allow-Headers': "*",
+    // 'authority':'imgbb.com',
+    'Content-Type':"multipart/form-data",
+    'cookie':document.cookie,
+    // 'origin':'https://imgbb.com',
+    // 'referer':'https://imgbb.com/',
+    // 'sec-ch-ua':'"Chromium";v="88", "Google Chrome";v="88", ";Not A Brand";v="99"',
+    // 'sec-ch-ua-mobile':'?0',
+    // "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
+    "Host":"https://sheltered-bayou-14417.herokuapp.com/"
   }
 
   const body = {
     'source' : this.state.source,
     'type': 'file',
     'action': 'upload',
-    'auth_token': "ea04e1a6307eeb4fa5a1fea47f97136c1d127d8f"
+    'auth_token': "ea04e1a6307eeb4fa5a1fea47f97136c1d127d8f",
+
   }
   
-  axios.post('https://imgbb.com/json', headers)
+  axios.post('https://imgbb.com/json', body, {headers: headers}, {xhrFields: {
+    withCredentials: true}
+ })
 .then((res) => {
   console.log("RESPONSE RECEIVED: ", res);
 })
@@ -72,7 +84,7 @@ componentDidUpdate() {
   
   state = {
     params : {
-    image_url: 'https://i.ibb.co/PT90n29/Mona-Lisa-image.jpg',
+    image_url: 'https://i.postimg.cc/bNpsgkMJ/Starry-night-art-image.jpg',
     search_type: 'reverse_image_search'
   },
   source: null
@@ -90,27 +102,7 @@ componentDidUpdate() {
   }
 }
 
+const condition = authUser => !!authUser;
 
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-export default App;
+export default withAuthorization(condition)(HomePage);
+//export default HomePage;

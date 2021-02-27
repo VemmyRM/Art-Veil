@@ -9,18 +9,20 @@
     "axios": "^0.21.1",
     "core-js": "^2.5.7",
     "core.js": "^0.4.2",
+    "firebase": "^8.2.9",
+    "fs": "0.0.1-security",
     "google-search-results-serpwow": "0.0.14",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.0",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "typescript": "^4.2.2",
-    "web-vitals": "^1.1.0"
+    "recompose": "^0.30.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
