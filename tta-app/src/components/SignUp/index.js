@@ -6,7 +6,7 @@ import * as ROUTES from '../../constants/routes';
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1><center>SignUp</center></h1>
     <SignUpForm />
   </div>
 );
@@ -74,49 +74,67 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <div class="form-signin container mt-5">
+      <form onSubmit={this.onSubmit} class="container">
+      <h1 class="h3 mb-3 fw-expanded">Please sign up</h1>
         <input
           name="username"
           value={username}
           onChange={this.onChange}
+          class="form-control mt-4 "
           type="text"
           placeholder="Full Name"
+          style={{height: "50px"}}
         />
+
         <input
           name="email"
           value={email}
           onChange={this.onChange}
+          class="form-control mt-4 "
           type="text"
           placeholder="Email Address"
+          style={{height: "50px"}}
         />
+
         <input
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
+          class="form-control mt-4"
           type="password"
           placeholder="Password"
-        />
+          style={{height: "50px"}}
+        />  
+
+
         <input
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
+          class="form-control mt-4 "
           type="password"
           placeholder="Confirm Password"
+          style={{height: "50px"}}
         />
-        <button disabled={isInvalid} type="submit">
+        <br />
+        <button disabled={isInvalid} type="submit" class="w-100 btn btn-lg btn-primary">
           Sign Up
         </button>
 
         {error && <p>{error.message}</p>}
       </form>
+      </div>
     );
   }
 }
 
 const SignUpLink = () => (
-  <p>
+  <div class="container">
+    <p style={{color:"white"}} class="container">
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
+  </div>
 );
 
 const SignUpForm = withRouter(withFirebase(SignUpFormBase));

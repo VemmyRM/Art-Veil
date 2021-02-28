@@ -1,8 +1,8 @@
 import app from 'firebase/app';
+import firebase from 'firebase'
 import 'firebase/auth';
 import 'firebase/database';
-// import dotenv from 'dotenv';
-// dotenv.config();
+//import 'firebase/storage';
 
 const config = {
   apiKey: "AIzaSyCIqpmXP5DBSpBSntLbawhRqr7-yzjUCIg",
@@ -14,10 +14,9 @@ const config = {
   measurementId: "G-TV16B8BJPR"
 };
 
-class Firebase {
+export class Firebase {
   constructor() {
     app.initializeApp(config);
-
     this.auth = app.auth();
     this.db = app.database();
   }

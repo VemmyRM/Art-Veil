@@ -18,7 +18,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import reportWebVitals from './reportWebVitals';
-import './index.css';
+import './App.css';
 import * as serviceWorker from './serviceWorker';
  
 import App from './components/App';

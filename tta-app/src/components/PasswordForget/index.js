@@ -58,7 +58,7 @@ class PasswordForgetFormBase extends Component {
           type="text"
           placeholder="Email Address" />
         </Form.Group>
-        <Button variant = "primary" disabled={isInvalid} type="submit">
+        <Button variant = "primary" disabled={isInvalid} type="submit"  >
           Reset My Password
         </Button>
  
@@ -69,8 +69,8 @@ class PasswordForgetFormBase extends Component {
 }
  
 const PasswordForgetLink = () => (
-  <div>
-    <p>
+  <div class="container">
+    <p style={{color:"white"}} class="container">
     Forgot your password?
     <Link className = "link" to={ROUTES.PASSWORD_FORGET}>Click here</Link>
     </p>

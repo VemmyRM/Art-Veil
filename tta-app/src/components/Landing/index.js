@@ -25,8 +25,10 @@ handleCall(params) {
   });
 }
 
-// submitFile = event => {
-// }
+submitFile = event => {
+
+  console.log(event.target.files[0]);
+}
 
 // //PHPSESSID=rthvrjbpudidf1cqcbbcml7l96
 
@@ -91,10 +93,9 @@ handleCall(params) {
   render() { 
     return ( 
       <div>
-        <input  onChange= {this.submitFile} type="file"></input>
+        <input onChange= {this.submitFile} type="file" />
         <button >Submit!</button>
         <h1>Hello World</h1>
-    
     
     <button onClick={() => this.handleCall(this.state.params)}>Click me!</button>
         <button>Hello</button>
