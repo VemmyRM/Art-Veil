@@ -74,9 +74,9 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <div class="form-signin container mt-5">
+      <div className="form-signin container mt-5">
       <form onSubmit={this.onSubmit} class="container">
-      <h1 class="h3 mb-3 fw-expanded">Please sign up</h1>
+      <h1 className="h3 mb-3 fw-expanded">Please sign up</h1>
         <input
           name="username"
           value={username}
@@ -118,7 +118,7 @@ class SignUpFormBase extends Component {
           style={{height: "50px"}}
         />
         <br />
-        <button disabled={isInvalid} type="submit" class="w-100 btn btn-lg btn-primary">
+        <button disabled={isInvalid} type="submit" className="w-100 btn btn-lg btn-primary">
           Sign Up
         </button>
 
@@ -130,8 +130,8 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-  <div class="container">
-    <p style={{color:"white"}} class="container">
+  <div className="container">
+    <p style={{color:"white"}} className="container">
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
   </div>

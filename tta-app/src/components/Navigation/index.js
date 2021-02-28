@@ -21,7 +21,7 @@ const Navigation = () => (
 
 const NavigationAuth = ({ authUser }) => (
   <Navbar bg="light" variant="light">
-      <div class="container">
+      <div className="container">
       <Nav.Link href="#home">ArtVEIL</Nav.Link>  
     <Nav.Link href="#home"></Nav.Link>    
     <Nav className="mr-auto"> 
@@ -38,9 +38,9 @@ const NavigationAuth = ({ authUser }) => (
 );
 
 const NavigationNonAuth = () => (
-  <Navbar bg="light" variant="light" class="container">
-    <div class="container">
-    <Navbar.Brand href="#home">LOGO/COMPANY</Navbar.Brand>    
+  <Navbar bg="light" variant="light" className="container">
+    <div className="container">
+    <Navbar.Brand href="#home">ArtVEIL</Navbar.Brand>    
     <Nav className="mr-auto"> 
       {/* <Nav.Link href = {ROUTES.LANDING}>Landing</Nav.Link> */}
 
